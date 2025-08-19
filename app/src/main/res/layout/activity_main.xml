@@ -5,13 +5,14 @@
 	android:id="@+id/main"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context=".MainActivity">
+	tools:context=".activity.MainActivity">
 
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/recyclerview"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		android:padding="@dimen/dp16"
+		android:padding="@dimen/dp_16"
+		tools:itemCount="3"
 		tools:listitem="@layout/layout_recycler_item" />
 
 	<com.google.android.material.floatingactionbutton.FloatingActionButton

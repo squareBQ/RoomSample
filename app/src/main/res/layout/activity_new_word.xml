@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/main"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context=".activity.NewWordActivity">
+
+	<androidx.appcompat.widget.AppCompatEditText
+		android:id="@+id/edit_word"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/dp_16"
+		android:fontFamily="sans-serif-light"
+		android:hint="@string/hint_word"
+		android:inputType="textAutoComplete"
+		android:minHeight="@dimen/dp_48"
+		android:textSize="18sp"
+		app:layout_constraintTop_toTopOf="parent" />
+
+	<androidx.appcompat.widget.AppCompatButton
+		android:id="@+id/button_save"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/dp_16"
+		android:background="@color/design_default_color_primary"
+		android:text="@string/button_save"
+		android:textColor="@color/buttonLabel"
+		app:layout_constraintTop_toBottomOf="@+id/edit_word" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
