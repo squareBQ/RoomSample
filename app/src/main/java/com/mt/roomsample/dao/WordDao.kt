@@ -26,7 +26,7 @@ interface WordDao {
 	@Query("SELECT * from word_table ORDER BY word ASC")
 	fun getAlphabetizedWords(): List<Word>
 
-
+	// 按照字母表升序排列
 	@Query("SELECT * from word_table ORDER BY word ASC")
 	fun getAlphabetizedWordsFlow(): Flow<List<Word>>
 
