@@ -83,4 +83,6 @@ dependencies {
 	implementation(libs.androidx.room.ktx)
 	kapt(libs.androidx.room.compiler)
 	androidTestImplementation(libs.androidx.room.testing)
+
+	implementation(libs.statelayout)
 }

@@ -9,22 +9,22 @@ import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat.enableEdgeToEdge
-import androidx.core.view.WindowInsetsCompat
-import androidx.databinding.DataBindingUtil.setContentView
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.drake.statelayout.StateConfig
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.mt.roomsample.R
 import com.mt.roomsample.WordApplication
 import com.mt.roomsample.adapter.WordListAdapter
+import com.mt.roomsample.databinding.ActivityMainBinding
 import com.mt.roomsample.model.Word
 import com.mt.roomsample.viewmodel.WordViewModel
 import com.mt.roomsample.viewmodel.WordViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
+	private lateinit var binding: ActivityMainBinding
 	private var adapter: WordListAdapter = WordListAdapter()
 
 	private val wordViewModel: WordViewModel by viewModels {
@@ -42,17 +42,21 @@ class MainActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		enableEdgeToEdge()
-		setContentView(R.layout.activity_main)
-		ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-			val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-			v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-			insets
+		binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+		StateConfig.apply {
+			emptyLayout = R.layout.layout_empty
+			errorLayout = R.layout.layout_error
+			loadingLayout = R.layout.layout_loading
+			setRetryIds(R.id.iv, R.id.msg)
 		}
+		binding.state.showLoading()
 
 		initRecycler()
 
 		wordViewModel.allWords.observe(this) { words ->
 			words?.let { adapter.submitList(it) }
+			binding.state.showContent()
 		}
 
 		val fab = findViewById<FloatingActionButton>(R.id.fab)
