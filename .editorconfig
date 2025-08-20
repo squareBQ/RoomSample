@@ -1,0 +1,36 @@
+# Google Java / Kotlin style for Android project
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Kotlin & Java
+[*.{kt,kts,java}]
+indent_style = space
+indent_size = 2
+continuation_indent_size = 4
+max_line_length = 100
+
+# XML (布局、manifest)
+[*.xml]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# Gradle 脚本
+[*.{gradle,gradle.kts}]
+indent_style = space
+indent_size = 2
+continuation_indent_size = 4
+
+# JSON / YAML
+[*.{json,yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# Markdown
+[*.md]
+trim_trailing_whitespace = false
